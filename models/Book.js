@@ -1,10 +1,10 @@
 const { Sequelize, sequelize } = require('../db/db');
 const { DataTypes } = require('sequelize');
 
-const Book = sequelize.define('Book', {
+const Book = sequelize.define('books', {
     title: DataTypes.STRING,
     author: DataTypes.STRING,
-    isBorrow: {
+    isBorrowed: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
