@@ -1,4 +1,4 @@
-/**
+/*
     const { sequelize, Sequelize } = require('./db/db');
 
     // HUMAN ATTEMPT 2, REFER TO BOOK.JS
