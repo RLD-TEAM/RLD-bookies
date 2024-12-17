@@ -8,7 +8,7 @@ const Book = sequelize.define('Book', {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
-    dueDate: DataTypes.DATE,
+    dueDate: DataTypes.DATEONLY,
     fine: {
         type: DataTypes.FLOAT,
         defaultValue: 0.99,
