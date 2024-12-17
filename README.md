@@ -86,3 +86,10 @@ Heads-up, this is a big one!
 As a User, I want to access, create, edit, and delete my data all from a front-end GUI application.
 As a returning user, I want to be automatically logged in, instead of having to enter my credentials each time I revisit the application.
 As a User, I want my app to be visually stunning.
+
+# Wireframe 
+https://wireframe.cc/wiDghh
+![Screenshot 2024-12-17 125831](https://github.com/user-attachments/assets/c1a5b717-3497-4dee-99fe-0548e82c302f)
+
+# Authors 
+Rubin Tollinchi, Lilit Sanjyan, Daniel Martinez Paiz
