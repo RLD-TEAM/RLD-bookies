@@ -1,38 +1,18 @@
-// const { User } = require('../models/User');
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: ':memory:', // Use in-memory storage for SQLite
-});
+const { Sequelize, sequelize } = require('../db/db');
+const { DataTypes } = require('sequelize');
 
-const Book = sequelize.define('Book', {
+const Book = sequelize.define('books', {
     title: DataTypes.STRING,
     author: DataTypes.STRING,
-    isBorrow: {
+    isBorrowed: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
-    dueDate: DataTypes.DATE,
+    dueDate: DataTypes.DATEONLY,
     fine: {
         type: DataTypes.FLOAT,
-        defaultValue: 0,
+        defaultValue: 0.99,
     },
 });
 
-// AI ATTEMPTED
-// Book.associate = (models) => {
-//     Book.belongsTo(models.User, {
-//         foreignKey: 'userId',
-//         as: 'borrower',
-//     });
-
-//     return Book;
-// };
-
-// HUMAN ATTEMPTED
-// Book.belongsTo(User, {
-//     foreignKey: 'ownerId'
-// });
-// User.hasMany(Book);
-
-module.exports = { Book, sequelize };
+module.exports = { Book };
