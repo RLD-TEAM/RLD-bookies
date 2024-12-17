@@ -1,5 +1,5 @@
 const request = require('supertest');
-const { sequelize } = require('../models/Book');
+const { sequelize } = require('../db/db');
 // Ensure server.js exports the app
 const app = require('../server');
 
@@ -25,7 +25,7 @@ describe('Books API', () => {
             .send({
                 title: 'Pride & Prejudice',
                 author: 'Jane Austen',
-                isBorrow: true,
+                isBorrowed: true,
                 dueDate: '2025-01-03',
                 fine: 1.99
             })
@@ -34,7 +34,7 @@ describe('Books API', () => {
         expect(response.body.title).toBe('Pride & Prejudice');
         expect(response.body.author).toBe('Jane Austen');
         expect(response.body.dueDate).toBe('2025-01-03');
-        expect(response.body.isBorrow).toBe(true);
+        expect(response.body.isBorrowed).toBe(true);
         expect(response.body.fine).toBe(1.99);
     });
 
@@ -53,7 +53,7 @@ describe('Books API', () => {
             .send({
                 title: 'Pride & Prejudice',
                 author: 'Jane Austen',
-                isBorrow: true,
+                isBorrowed: true,
                 dueDate: '2025-01-03',
                 fine: 1.99
             })
@@ -72,7 +72,7 @@ describe('Books API', () => {
             .send({
                 title: 'Encyclopedia of Faes',
                 author: 'Emily Wild',
-                isBorrow: true,
+                isBorrowed: true,
                 dueDate: '2025-01-09',
                 fine: 1.99
             })
@@ -82,14 +82,14 @@ describe('Books API', () => {
             .send({
                 title: 'Encyclopedia of Faeries',
                 author: 'Emily Wildes',
-                isBorrow: false,
+                isBorrowed: false,
                 fine: 0
             });
 
         expect(updateResponse.statusCode).toBe(200);
         expect(updateResponse.body.title).toBe('Encyclopedia of Faeries');
         expect(updateResponse.body.author).toBe('Emily Wildes');
-        expect(updateResponse.body.isBorrow).toBe(false);
+        expect(updateResponse.body.isBorrowed).toBe(false);
         expect(updateResponse.body.fine).toBe(0);
     });
     
@@ -101,7 +101,7 @@ describe('Books API', () => {
         .send({
             title: 'Encyclopedia of Faes',
             author: 'Emily Wild',
-            isBorrow: true,
+            isBorrowed: true,
             dueDate: '2025-01-09',
             fine: 1.99
         });
