@@ -1,22 +1,22 @@
-// const { User } = require('../models/User');
-const { Sequelize, DataTypes } = require('sequelize');
+const { User } = require("../models/User");
+const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: ':memory:', // Use in-memory storage for SQLite
+  dialect: "sqlite",
+  storage: ":memory:", // Use in-memory storage for SQLite
 });
 
-const Book = sequelize.define('Book', {
-    title: DataTypes.STRING,
-    author: DataTypes.STRING,
-    isBorrow: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-    },
-    dueDate: DataTypes.DATE,
-    fine: {
-        type: DataTypes.FLOAT,
-        defaultValue: 0,
-    },
+const Book = sequelize.define("Book", {
+  title: DataTypes.STRING,
+  author: DataTypes.STRING,
+  isBorrow: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
+  dueDate: DataTypes.DATE,
+  fine: {
+    type: DataTypes.FLOAT,
+    defaultValue: 0,
+  },
 });
 
 // AI ATTEMPTED
