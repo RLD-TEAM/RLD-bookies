@@ -1,4 +1,4 @@
-const { User } = require("../models/User");
+// const { User } = require('../models/User');
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = new Sequelize({
   dialect: "sqlite",
