@@ -1,5 +1,5 @@
-const express = require('express');
-const { sequelize } = require('./db/db');
+const express = require("express");
+const { sequelize } = require("./db/db");
 const {
   createBook,
   getAllBooks,
