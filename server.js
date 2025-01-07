@@ -20,6 +20,11 @@ app.get("/books", getAllBooks);
 app.get("/books/:id", getBookById);
 app.put("/books/:id", updateBook);
 app.delete("/books/:id", deleteBook);
+app.post("/user", createUser);
+app.get("/user/:id", getUserById);
+app.put("/user/:id", updateUser);
+app.delete("/user/:id", deleteUser);
+
 app.post("/login", loginUser);
 app.post("/logout", logoutUser);
 
