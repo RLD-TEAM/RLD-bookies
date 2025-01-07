@@ -1,5 +1,5 @@
-const express = require('express');
-const { sequelize } = require('./db/db');
+const express = require("express");
+const { sequelize } = require("./db/db");
 const {
   createBook,
   getAllBooks,
@@ -7,14 +7,8 @@ const {
   updateBook,
   deleteBook,
 } = require("./controllers/bookController");
-const {
-  createUser,
-  getUserById,
-  updateUser,
-  deleteUser,
-  loginUser,
-  logoutUser,
-} = require("./controllers/userController");
+
+const {loginUser, logoutUser} = require("./controllers/userController");
 
 const app = express();
 
