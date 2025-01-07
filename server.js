@@ -1,4 +1,6 @@
 const express = require("express");
+const session = require("express-session");
+
 const { sequelize } = require("./db/db");
 const {
   createBook,
@@ -18,6 +20,9 @@ const {
 } = require("./controllers/userController");
 
 const app = express();
+
+// Add session support
+app.use(session({ secret:'mySecret', resave: false, saveUninitialized: false }));
 
 app.use(express.json());
 

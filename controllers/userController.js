@@ -60,6 +60,7 @@ const loginUser = async (req, res) => {
 
   try {
     const user = await User.findOne({ where: { username } });
+    req.session.user = user;
     if (!user) {
       return res.status(401).json({ message: "User not found" });
     }
@@ -77,6 +78,8 @@ const loginUser = async (req, res) => {
 };
 
 const logoutUser = (req, res) => {
+  console.log(`attempting to logout ${req.session}`);
+  console.log(`attempting to logout ${req}`);
   req.session.destroy((err) => {
     if (err) {
       return res.status(500).json({ message: "Failed to log out" });
