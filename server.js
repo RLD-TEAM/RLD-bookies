@@ -6,9 +6,9 @@ const {
   getBookById,
   updateBook,
   deleteBook,
-  loginUser,
-  logoutUser,
 } = require("./controllers/bookController");
+
+const {loginUser, logoutUser} = require("./controllers/userController");
 
 const app = express();
 
