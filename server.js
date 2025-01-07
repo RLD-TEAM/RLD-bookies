@@ -8,7 +8,14 @@ const {
   deleteBook,
 } = require("./controllers/bookController");
 
-const {loginUser, logoutUser} = require("./controllers/userController");
+const {
+  createUser,
+  getUserById,
+  updateUser,
+  deleteUser,
+  loginUser,
+  logoutUser,
+} = require("./controllers/userController");
 
 const app = express();
 
