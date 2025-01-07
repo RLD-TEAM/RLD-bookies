@@ -1,16 +1,16 @@
 const { User } = require("../models/User");
 
 // Create a new User
-const createUser = async (req, res) => {
-  try {
-    const user = await User.create(req.body);
-    res.status(201).json(user);
-  } catch (error) {
-    res.status(400).json({
-      error: error.message,
-    });
-  }
-};
+// const createUser = async (req, res) => {
+//   try {
+//     const user = await User.create(req.body);
+//     res.status(201).json(user);
+//   } catch (error) {
+//     res.status(400).json({
+//       error: error.message,
+//     });
+//   }
+// };
 
 // Get a specific User by ID
 const getUserById = async (req, res) => {
@@ -60,15 +60,21 @@ const loginUser = async (req, res) => {
 
   try {
     const user = await User.findOne({ where: { username } });
+    req.session.user = user;
     if (!user) {
       return res.status(401).json({ message: "User not found" });
     }
     if (user.password !== password) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-    return res
-      .status(200)
-      .json({ message: "Login successful", user: { username: user.username } });
+    return res.status(200).json({
+      message: "Login successful",
+      user: {
+        id: user.Id,
+        username: user.username,
+        email: user.email,
+      },
+    });
   } catch (error) {
     res
       .status(500)
@@ -85,11 +91,65 @@ const logoutUser = (req, res) => {
   });
 };
 
+const signUp = async (req, res) => {
+  const { username, password, email } = req.body;
+
+  try {
+    const existingUser = await User.findOne({ where: { username } });
+    if (existingUser) {
+      return res.status(400).json({ message: "Username already taken" });
+    }
+    const newUser = await User.create({
+      username,
+      password,
+      email,
+    });
+    res.status(201).json({
+      message: "User created successfully",
+      user: {
+        id: newUser.id,
+        username: newUser.username,
+        email: newUser.email,
+      },
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error during sign up", error: error.message });
+  }
+};
+
+// const signIn = async (req, res) => {
+//   const { username, password } = req.body;
+
+//   try {
+//     const user = await User.findOne({ where: { username } });
+//     if (!user) {
+//       return res.status(401).json({ message: "User not found" });
+//     }
+//     if (user.password !== password) {
+//       return res.status(401).json({ message: " Invalid credentials" });
+//     }
+//     res.status(200).json({
+//       message: "Login successful",
+//       user: {
+//         id: user.id,
+//         username: user.username,
+//
+//       },
+//     });
+//   } catch (error) {
+//     res
+//       .status(500)
+//       .json({ message: "Error during sign in", error: error.message });
+//   }
+// };
+
 module.exports = {
-  createUser,
   getUserById,
   updateUser,
   deleteUser,
   loginUser,
   logoutUser,
+  signUp,
 };

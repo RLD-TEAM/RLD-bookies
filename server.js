@@ -1,5 +1,6 @@
-const express = require('express');
-const { sequelize } = require('./db/db');
+const express = require("express");
+const session = require("express-session");
+const { sequelize } = require("./db/db");
 const {
   createBook,
   getAllBooks,
@@ -8,15 +9,18 @@ const {
   deleteBook,
 } = require("./controllers/bookController");
 const {
-  createUser,
   getUserById,
   updateUser,
   deleteUser,
   loginUser,
   logoutUser,
+  signUp,
 } = require("./controllers/userController");
 
 const app = express();
+app.use(
+  session({ secret: "mySecret", resave: false, saveUninitialized: false })
+);
 
 app.use(express.json());
 
@@ -26,13 +30,15 @@ app.get("/books", getAllBooks);
 app.get("/books/:id", getBookById);
 app.put("/books/:id", updateBook);
 app.delete("/books/:id", deleteBook);
-app.post("/user", createUser);
+
 app.get("/user/:id", getUserById);
 app.put("/user/:id", updateUser);
 app.delete("/user/:id", deleteUser);
 
 app.post("/login", loginUser);
 app.post("/logout", logoutUser);
+
+app.post("/signup", signUp);
 
 // Export the app for testing purposes
 module.exports = app;
