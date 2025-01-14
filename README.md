@@ -88,14 +88,14 @@ As a returning user, I want to be automatically logged in, instead of having to 
 As a User, I want my app to be visually stunning.
 
 # Dependencies installed
-Express.js
-Express-session
-Nodemon
-Sequelize
-Sqlite
+Express.js,
+Express-session,
+Nodemon,
+Sequelize,
+Sqlite,
 
 # How to run app
-node run seed 
+node run seed, 
 node server.js
 
 # Tools used
