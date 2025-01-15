@@ -12,10 +12,16 @@ const createUser = async (req, res) => {
   }
 };
 
+// Get all Users
+const getAllUsers = async (req, res) => {
+  const user = await User.findAll();
+  res.json()
+}
+
 // Get a specific User by ID
 const getUserById = async (req, res) => {
   const user = await User.findByPk(req.params.id);
-  book
+  user
     ? res.json(user)
     : res.status(404).json({
         error: "User not found",
@@ -90,6 +96,7 @@ const logoutUser = (req, res) => {
 
 module.exports = {
   createUser,
+  getAllUsers,
   getUserById,
   updateUser,
   deleteUser,

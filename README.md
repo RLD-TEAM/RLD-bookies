@@ -96,3 +96,15 @@ https://library-link.onrender.com
 
 # Authors 
 Rubin Tollinchi, Lilit Sanjyan, Daniel Martinez Paiz
+
+# Getting Started
+Clone our repository and you can begin
+
+### Install Dependencies
+- npm i
+
+### Populate the mock data (books & users)
+#### OR use our CRUD API to add in your own, but seeding is faster!
+- npm run seed
+
+### Run the server.js (node server.js)

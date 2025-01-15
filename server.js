@@ -1,23 +1,10 @@
+const cors = require("cors");
 const express = require("express");
 const session = require("express-session");
+const AllUserRoutes = require("./routes/userRoutes");
+const AllBookRoutes = require("./routes/bookRoutes");
 
 const { sequelize } = require("./db/db");
-const {
-  createBook,
-  getAllBooks,
-  getBookById,
-  updateBook,
-  deleteBook,
-} = require("./controllers/bookController");
-
-const {
-  createUser,
-  getUserById,
-  updateUser,
-  deleteUser,
-  loginUser,
-  logoutUser,
-} = require("./controllers/userController");
 
 const app = express();
 
@@ -26,19 +13,15 @@ app.use(session({ secret:'mySecret', resave: false, saveUninitialized: false }))
 
 app.use(express.json());
 
-// Define CRUD routes
-app.post("/books", createBook);
-app.get("/books", getAllBooks);
-app.get("/books/:id", getBookById);
-app.put("/books/:id", updateBook);
-app.delete("/books/:id", deleteBook);
-app.post("/user", createUser);
-app.get("/user/:id", getUserById);
-app.put("/user/:id", updateUser);
-app.delete("/user/:id", deleteUser);
+// Access data from backend to frontend CLIENT
+// placed before using routes in server.js
+app.use(cors());
 
-app.post("/login", loginUser);
-app.post("/logout", logoutUser);
+// Define CRUD routes have no been..
+// Modularized within ./routes/bookRoutes.js
+AllBookRoutes(app);
+// Modularized within ./routes/userRoutes.js
+AllUserRoutes(app);
 
 // Export the app for testing purposes
 module.exports = app;
