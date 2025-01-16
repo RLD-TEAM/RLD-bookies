@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express = require("express");
 const session = require("express-session");
+const { auth } = require("express-openid-connect");
 
 const { sequelize } = require("./db/db");
 const {
@@ -26,6 +28,25 @@ app.use(session({ secret:'mySecret', resave: false, saveUninitialized: false }))
 
 app.use(express.json());
 
+const {
+  AUTH0_SECRET,
+  AUTH0_AUDIENCE,
+  AUTH0_CLIENT_ID,
+  AUTH0_BASE_URL,
+  AUTH0_ISSUER_BASE_URL,
+} = process.env;
+
+const config = {
+  authRequired: true,
+  auth0Logout: true,
+  secret: AUTH0_SECRET,
+  baseURL: AUTH0_BASE_URL,
+  clientID: AUTH0_CLIENT_ID,
+  issuerBaseURL: AUTH0_ISSUER_BASE_URL,
+};
+
+app.use(auth(config));
+
 // Define CRUD routes
 app.post("/books", createBook);
 app.get("/books", getAllBooks);
@@ -36,9 +57,6 @@ app.post("/user", createUser);
 app.get("/user/:id", getUserById);
 app.put("/user/:id", updateUser);
 app.delete("/user/:id", deleteUser);
-
-app.post("/login", loginUser);
-app.post("/logout", logoutUser);
 
 // Export the app for testing purposes
 module.exports = app;
