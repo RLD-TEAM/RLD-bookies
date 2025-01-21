@@ -99,6 +99,10 @@ express-openid-connect
 node run seed, 
 node server.js
 
+# Credentials to run
+billy@mail.com
+Mypassword123$$$
+
 # Tools used
 Express.js, Node.js, SQL, Sequelize, Session, Auth0 (auth0.com)
 
