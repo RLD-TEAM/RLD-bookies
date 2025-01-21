@@ -9,11 +9,11 @@ const AllBooks = (props) => {
     let listBooks = [];
 
     if(allBooks.length > 0 ) {
+        console.log(listBooks);
         listBooks = allBooks.map((bookObj) => (
-            <>
-            <tr key={bookObj.id}>{bookObj.title}</tr>
-            {/* <tr key={bookObj.id}>{bookObj.description}</tr> */}
-            </>
+            bookObj ? 
+            <tr key={bookObj.id}>{ bookObj.title }</tr>
+            : ''
         ))}
 
     console.log(listBooks);
@@ -25,10 +25,6 @@ const AllBooks = (props) => {
         axios
             .get("http://localhost:3000/books")
             .then((res) => {
-                console.log(`response from AllBooks VIEW: ${res}`);
-                console.log(`response from AllBooks VIEW: ${res.data}`);
-                console.log(`response from AllBooks VIEW: ${res.data[0]}`);
-                console.log(`response from AllBooks VIEW: ${res.data[0].title}`);
                 setAllBooks(res.data);
             })
             .catch( (err) => {
@@ -73,7 +69,7 @@ const AllBooks = (props) => {
                 <tbody>
                     <tr>Title Hopefully</tr>
                     <tr>Author Hopefully</tr>
-                    {listBooks}
+                    { listBooks ? listBooks : null }
                 </tbody>
             </table>
         </div>
