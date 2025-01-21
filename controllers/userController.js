@@ -33,8 +33,8 @@ const signUp = async (req, res) => {
 
 // Get all Users
 const getAllUsers = async (req, res) => {
-  const user = await User.findAll();
-  res.json();
+  const users = await User.findAll();
+  res.json(users);
 };
 
 // Get a specific User by ID
