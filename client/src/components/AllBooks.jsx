@@ -10,7 +10,10 @@ const AllBooks = (props) => {
 
     if(allBooks.length > 0 ) {
         listBooks = allBooks.map((bookObj) => (
+            <>
             <tr key={bookObj.id}>{bookObj.title}</tr>
+            {/* <tr key={bookObj.id}>{bookObj.description}</tr> */}
+            </>
         ))}
 
     console.log(listBooks);

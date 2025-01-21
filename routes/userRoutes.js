@@ -3,7 +3,7 @@ const userController = require("../controllers/userController");
 // routes that point to userController to query our DB to be used in the server file.
 module.exports = (app) => {
     // create a user
-    app.post("/users", userController.createUser);
+    app.post("/users", userController.signUp);
 
     // find all users
     app.get("/users", userController.getAllUsers);
