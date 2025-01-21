@@ -80,39 +80,6 @@ const deleteUser = async (req, res) => {
       });
 };
 
-const loginUser = async (req, res) => {
-  const { username, password } = req.body;
-
-  try {
-    const user = await User.findOne({ where: { username } });
-    req.session.user = user;
-    if (!user) {
-      return res.status(401).json({ message: "User not found" });
-    }
-    if (user.password !== password) {
-      return res.status(401).json({ message: "Invalid credentials" });
-    }
-    return res
-      .status(200)
-      .json({ message: "Login successful", user: { username: user.username } });
-  } catch (error) {
-    res
-      .status(500)
-      .json({ message: " Error during login", error: error.message });
-  }
-};
-
-const logoutUser = (req, res) => {
-  console.log(`attempting to logout ${req.session}`);
-  console.log(`attempting to logout ${req}`);
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json({ message: "Failed to log out" });
-    }
-    res.status(200).json({ message: "Logout successful" });
-  });
-};
-
 module.exports = {
   getAllUsers,
   getUserById,
