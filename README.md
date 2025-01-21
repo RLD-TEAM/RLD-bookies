@@ -93,6 +93,7 @@ Express-session,
 Nodemon,
 Sequelize,
 Sqlite,
+express-openid-connect
 
 # How to run app
 node run seed, 
