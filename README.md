@@ -10,7 +10,7 @@ Clone our repository and you can begin
 
 # How to run app
 
-npm i
+npm i,
 npm run seed,
 node server.js
 
@@ -64,13 +64,3 @@ Backend Framework: Node.js with Express
 Database: SQLite with Sequelize ORM
 Authentication: Auth0
 Testing: Jest
-
-# Wireframe
-
-https://wireframe.cc/wiDghh
-![Screenshot 2024-12-17 125831](https://github.com/user-attachments/assets/c1a5b717-3497-4dee-99fe-0548e82c302f)
-
-# Deployed App Link
-
-https://library-link.onrender.com
-
