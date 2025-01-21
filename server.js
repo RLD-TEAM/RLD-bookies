@@ -1,6 +1,5 @@
-const express = require("express");
-const session = require("express-session");
-const { sequelize } = require("./db/db");
+const express = require('express');
+const { sequelize } = require('./db/db');
 const {
   createBook,
   getAllBooks,
@@ -8,6 +7,7 @@ const {
   updateBook,
   deleteBook,
 } = require("./controllers/bookController");
+
 const {
   getUserById,
   updateUser,
@@ -18,11 +18,27 @@ const {
 } = require("./controllers/userController");
 
 const app = express();
-app.use(
-  session({ secret: "mySecret", resave: false, saveUninitialized: false })
-);
 
 app.use(express.json());
+
+const {
+  AUTH0_SECRET,
+  AUTH0_AUDIENCE,
+  AUTH0_CLIENT_ID,
+  AUTH0_BASE_URL,
+  AUTH0_ISSUER_BASE_URL,
+} = process.env;
+
+const config = {
+  authRequired: true,
+  auth0Logout: true,
+  secret: AUTH0_SECRET,
+  baseURL: AUTH0_BASE_URL,
+  clientID: AUTH0_CLIENT_ID,
+  issuerBaseURL: AUTH0_ISSUER_BASE_URL,
+};
+
+app.use(auth(config));
 
 // Define CRUD routes
 app.post("/books", createBook);
@@ -37,8 +53,6 @@ app.delete("/user/:id", deleteUser);
 
 app.post("/login", loginUser);
 app.post("/logout", logoutUser);
-
-app.post("/signup", signUp);
 
 // Export the app for testing purposes
 module.exports = app;

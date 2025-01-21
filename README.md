@@ -87,9 +87,26 @@ As a User, I want to access, create, edit, and delete my data all from a front-e
 As a returning user, I want to be automatically logged in, instead of having to enter my credentials each time I revisit the application.
 As a User, I want my app to be visually stunning.
 
+# Dependencies installed
+Express.js,
+Express-session,
+Nodemon,
+Sequelize,
+Sqlite,
+
+# How to run app
+node run seed, 
+node server.js
+
+# Tools used
+Express.js, Node.js, SQL, Sequelize, Session, Auth0 (auth0.com)
+
 # Wireframe 
 https://wireframe.cc/wiDghh
 ![Screenshot 2024-12-17 125831](https://github.com/user-attachments/assets/c1a5b717-3497-4dee-99fe-0548e82c302f)
+
+# Deployed App Link
+https://library-link.onrender.com
 
 # Authors 
 Rubin Tollinchi, Lilit Sanjyan, Daniel Martinez Paiz

@@ -3,7 +3,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
+<<<<<<< HEAD
+=======
+    "express-openid-connect": "^2.17.1",
+>>>>>>> 2d79c668c5dea106e591cb3c77b05d1a75af73db
     "express-session": "^1.18.1",
     "nodemon": "^3.1.7",
     "sequelize": "^6.37.5",
