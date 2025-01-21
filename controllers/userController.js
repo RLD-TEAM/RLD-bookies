@@ -1,16 +1,41 @@
 const { User } = require("../models/User");
 
 // Create a new User
-const createUser = async (req, res) => {
+const signUp = async (req, res) => {
+  const { username, password, email } = req.body;
+
   try {
-    const user = await User.create(req.body);
-    res.status(201).json(user);
-  } catch (error) {
-    res.status(400).json({
-      error: error.message,
+    const existingUser = await User.findOne({ where: { username } });
+    const existingEmail = await User.findOne({ where: { email } });
+    if (existingUser) {
+      return res.status(400).json({ message: "Username already taken" });
+    }
+    if (existingEmail) {
+      return res.status(400).json({ message: "Email already taken"});
+    }
+
+    const newUser = await User.create(req.body);
+    res.status(201).json({
+      message: "User created successfully",
+      user: {
+        id: newUser.id,
+        name: newUser.name,
+        username: newUser.username,
+        email: newUser.email,
+      },
     });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error during sign up", error: error.message });
   }
 };
+
+// Get all Users
+const getAllUsers = async (req, res) => {
+  const user = await User.findAll();
+  res.json()
+}
 
 // Get a specific User by ID
 const getUserById = async (req, res) => {
@@ -56,8 +81,11 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
-  createUser,
+  getAllUsers,
   getUserById,
   updateUser,
   deleteUser,
+  loginUser,
+  logoutUser,
+  signUp
 };
