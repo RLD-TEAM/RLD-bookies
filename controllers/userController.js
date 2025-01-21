@@ -15,7 +15,7 @@ const { User } = require("../models/User");
 // Get a specific User by ID
 const getUserById = async (req, res) => {
   const user = await User.findByPk(req.params.id);
-  book
+  user
     ? res.json(user)
     : res.status(404).json({
         error: "User not found",
