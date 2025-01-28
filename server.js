@@ -1,4 +1,3 @@
-require('dotenv').config();
 const cors = require("cors");
 const express = require("express");
 const session = require("express-session");
@@ -11,10 +10,12 @@ const { sequelize } = require("./db/db");
 const app = express();
 
 // Add session support
-app.use(session({ 
-  secret:'mySecret', 
-  resave: false, 
-  saveUninitialized: false }));
+app.use(
+  session({
+    secret: "mySecret",
+    resave: false,
+  })
+);
 
 app.use(express.json());
 
