@@ -1,0 +1,20 @@
+1. Why did you do the project?
+WE built backend project called "Library",
+
+2. What did you do?
+We created app with Sqlite and Express.js. We created SignUp, LogIn,Logout functionalities.
+Also created Book controller to create new books, find them.
+We added Auth0 authentication.
+
+3. What did you learn?
+I learned how to connect Auth0 with databases and deployed app.
+
+4. What issues did you run into?
+
+We had issue with authentication,it didn't connected with database,we need to connect environment in Render.
+
+5. Are there specific functions you can connect to your work?
+
+I would like to connect admin user and regular user functionality.
+
+

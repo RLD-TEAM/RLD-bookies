@@ -1,3 +1,4 @@
+require("dotenv").config();
 const cors = require("cors");
 const express = require("express");
 const session = require("express-session");
@@ -14,6 +15,7 @@ app.use(
   session({
     secret: "mySecret",
     resave: false,
+    saveUninitialized: false,
   })
 );
 
