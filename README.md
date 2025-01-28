@@ -9,10 +9,13 @@ This Library Management API is a backend application designed to manage books an
 Clone our repository and you can begin
 
 # How to run app
-
+## backend
 npm i,
 npm run seed,
 node server.js
+
+## frontend
+npm run dev
 
 # Credentials to run
 
