@@ -11,16 +11,15 @@ const { sequelize } = require("./db/db");
 const app = express();
 
 // Add session support
-app.use(session({ 
-  secret:'mySecret', 
-  resave: false, 
+app.use(session({
+  secret:'mySecret',
+  resave: false,
   saveUninitialized: false }));
 
 app.use(express.json());
 
 const {
   AUTH0_SECRET,
-  AUTH0_AUDIENCE,
   AUTH0_CLIENT_ID,
   AUTH0_BASE_URL,
   AUTH0_ISSUER_BASE_URL,
