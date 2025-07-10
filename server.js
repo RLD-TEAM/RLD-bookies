@@ -9,6 +9,7 @@ const AllBookRoutes = require("./routes/bookRoutes");
 const { sequelize } = require("./db/db");
 
 const app = express();
+const path = require('path');
 
 // Add session support
 app.use(session({
@@ -17,6 +18,8 @@ app.use(session({
   saveUninitialized: false }));
 
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
 const {
   AUTH0_SECRET,
@@ -44,9 +47,15 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+});
+
 // Access data from backend to frontend CLIENT
 // placed before using routes in server.js
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
 // Define CRUD routes have no been..
 // Modularized within ./routes/bookRoutes.js
