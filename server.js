@@ -47,10 +47,6 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-});
-
 // Access data from backend to frontend CLIENT
 // placed before using routes in server.js
 app.use(cors());
@@ -62,6 +58,10 @@ app.use(express.static(path.join(__dirname, 'client', 'dist')));
 AllBookRoutes(app);
 // Modularized within ./routes/userRoutes.js
 AllUserRoutes(app);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+});
 
 // Export the app for testing purposes
 module.exports = app;

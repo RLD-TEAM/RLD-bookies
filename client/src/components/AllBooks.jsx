@@ -8,7 +8,7 @@ const AllBooks = (props) => {
     const [allBooks, setAllBooks] = useState([]);
     let listBooks = [];
 
-    if(allBooks.length > 0 ) {
+    if(Array.isArray(allBooks) && allBooks.length > 0) {
         listBooks = allBooks.map((bookObj) => (
             <>
             <tr key={bookObj.id}>{bookObj.title}</tr>
@@ -22,7 +22,6 @@ const AllBooks = (props) => {
 
     // set useEffect for axios to render
     useEffect( () => {
-        axios
             axios.get("/books")
             .then((res) => {
                 console.log(`response from AllBooks VIEW: ${res}`);
