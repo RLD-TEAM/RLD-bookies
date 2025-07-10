@@ -36,6 +36,14 @@ const config = {
 
 app.use(auth(config));
 
+app.get('/', (req, res) => {
+  res.json({
+    message: 'RLD Bookies API is running!',
+    status: 'success',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Access data from backend to frontend CLIENT
 // placed before using routes in server.js
 app.use(cors());
@@ -54,8 +62,11 @@ if (require.main === module) {
   (async () => {
     try {
       await sequelize.sync();
-      app.listen(3000, () => {
-        console.log("Server is running on http://localhost:3000");
+      const PORT = process.env.PORT || 3000;
+      const HOST = process.env.HOST || '0.0.0.0';
+
+      app.listen(PORT, HOST, () => {
+        console.log(`Server is running on ${HOST}:${PORT}`);
       });
     } catch (error) {
       console.error("Unable to connect to the database:", error);
