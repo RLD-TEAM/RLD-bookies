@@ -23,7 +23,7 @@ const AllBooks = (props) => {
     // set useEffect for axios to render
     useEffect( () => {
         axios
-            .get("/books")
+            axios.get("/books")
             .then((res) => {
                 console.log(`response from AllBooks VIEW: ${res}`);
                 console.log(`response from AllBooks VIEW: ${res.data}`);
