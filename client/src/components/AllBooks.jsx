@@ -17,13 +17,13 @@ const AllBooks = (props) => {
         ))}
 
     console.log(listBooks);
- 
+
     const [deleteToggle, setDeleteToggle] = useState(false);
 
     // set useEffect for axios to render
     useEffect( () => {
         axios
-            .get("http://localhost:3000/books")
+            .get(axios.get("/books")
             .then((res) => {
                 console.log(`response from AllBooks VIEW: ${res}`);
                 console.log(`response from AllBooks VIEW: ${res.data}`);
