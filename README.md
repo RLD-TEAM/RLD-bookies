@@ -67,3 +67,7 @@ Backend Framework: Node.js with Express
 Database: SQLite with Sequelize ORM
 Authentication: Auth0
 Testing: Jest
+
+# Reflection
+
+This group effort provided valuable exposure to developing community-centric web applications. The project emphasized collaborative planning, managing database relationships, and implementing user-friendly features. It improved our proficiency with collaborative coding practices, code reviews, and integrating testing methodologies to ensure application stability.
